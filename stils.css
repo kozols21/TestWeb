@@ -51,10 +51,10 @@
 
 @keyframes pulse {
   0% {
-    background-color: #001F3F;
+    color: #001F3F;
   }
   100% {
-    background-color: #FF4136;
+    color: #FF4136;
   }
 }
 /*!
