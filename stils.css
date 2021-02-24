@@ -48,7 +48,6 @@
   height: 100%;
   animation: pulse 5s infinite;
 }
-
 @keyframes pulse {
   0% {
     color: #001F3F;
