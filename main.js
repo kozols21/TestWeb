@@ -5,4 +5,9 @@
  */
 
 
-a
+function f(){
+
+    let x=document.createElement("button");
+    x.innerHTML="poga";
+    document.getElementById("divtags").appendChild(x);
+}
