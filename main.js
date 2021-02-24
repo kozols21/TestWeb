@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
-var executed = false;
+
 
 function f(){
-if (!executed){
+    var m = 0;
+if (m!==document.getElementById("nosaukums").value){
+    document.getElementById("divtags").innerHTML = '';
    console.log(document.getElementById("nosaukums").value);
     let n = document.getElementById("nosaukums").value;
-    
+    var m =n;
     
     for(let a =0;a<n;a++){
         
@@ -23,6 +25,6 @@ if (!executed){
         }
     }
     
-    executed=true;
+   
 }
 }
