@@ -32,6 +32,7 @@ if (m!==document.getElementById("nosaukums").value){
     }
     sk.fill(0);
     y(0);
+    sk.fill(0);
     for(let a =0;a<n;a++){
         
          document.getElementById("divtags").appendChild(document.createElement("br"));
@@ -42,11 +43,28 @@ if (m!==document.getElementById("nosaukums").value){
            x.setAttribute("onclick","maina("+((a)*(n)+b)+");");
           
            let y=document.createElement("img");
-            
+           
          // (a)*(n)+b;
          y.setAttribute("id",(a)*(n)+b);
          y.setAttribute("style","width:0%");
+         let r=Math.floor(Math.random() * Math.floor(2))+1;
+         if(sk[bildes[(a)*(n)+b]]===0){
+             if(r==1){
+                y.src="a"+ bildes[(a)*(n)+b] +".jpg";
+                sk[bildes[(a)*(n)+b]]=1;
+             }
+             else{
+                 y.src="b"+ bildes[(a)*(n)+b] +".jpg";
+                 sk[bildes[(a)*(n)+b]]=2;
+             }
+            
+        }
+        else if(sk[bildes[(a)*(n)+b]]===1){
             y.src="b"+ bildes[(a)*(n)+b] +".jpg";
+        }
+        else{
+            y.src="a"+ bildes[(a)*(n)+b] +".jpg";
+        }
             x.appendChild(y);
             document.getElementById("divtags").appendChild(x);
             
