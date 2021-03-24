@@ -8,6 +8,9 @@ var b0;
 var ps;
 var sk;
 var bildes;
+var pnp=0;
+var tmp1;
+var tmp2;
 
 function f(){
     var m = 0;
@@ -40,8 +43,9 @@ if (m!==document.getElementById("nosaukums").value){
             let x=document.createElement("button");
            // x.innerHTML=(a)*(n)+(b+1);
            //x.innerHTML='onclick="maina();"';
-           x.setAttribute("onclick","maina("+((a)*(n)+b)+");");
-          
+           x.setAttribute("onclick","skaita("+((a)*(n)+b)+");");
+           x.setAttribute("id","poga";
+          //"maina("+((a)*(n)+b)+");"+
            let y=document.createElement("img");
            
          // (a)*(n)+b;
@@ -84,6 +88,39 @@ function maina(x){
         y.setAttribute("style","width:0%");
     }
     
+}
+function skaita(x){
+    pnp++;
+    //ja pirmo reizi spiez
+    if(pnp===1){
+        //ievieto bildes indeksu temp
+        tmp1=bildes[x];
+        tmp2=x;
+        maina(x);
+    }
+    //ja otro reizi spiez
+    else{
+        //salidzina 1. un 2.
+        if(tmp1===bildes[x]){
+            maina(x);
+            
+            //nakotne vajag lietu kas skaita pari
+        }
+        else{
+            //iznemums ja uzpiez vienu divreiz
+            if(tmp2===x){
+                maina(x);
+                tmp=0;
+            }
+            else{
+                maina(x);
+                maina(tmp2);
+                maina(x);
+        }
+        }
+        //pnp atkal 0
+        pnp=0;
+    }
 }
 function y(z){
     //ja z ir lielaks par noteiktu vertibu aptur ciklu
