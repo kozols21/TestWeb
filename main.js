@@ -11,9 +11,11 @@ var bildes;
 var pnp=0;
 var tmp1;
 var tmp2;
-
+var uzvara;
 function f(){
     var m = 0;
+    uzvara=0;
+    pnp=0;
 if (m!==document.getElementById("nosaukums").value){
     document.getElementById("divtags").innerHTML = '';
   // console.log(document.getElementById("nosaukums").value);
@@ -44,7 +46,7 @@ if (m!==document.getElementById("nosaukums").value){
            // x.innerHTML=(a)*(n)+(b+1);
            //x.innerHTML='onclick="maina();"';
            x.setAttribute("onclick","skaita("+((a)*(n)+b)+");");
-           x.setAttribute("id","poga";
+           x.setAttribute("id",((a)*(n)+b)+"p");
           //"maina("+((a)*(n)+b)+");"+
            let y=document.createElement("img");
            
@@ -80,7 +82,7 @@ if (m!==document.getElementById("nosaukums").value){
 }
 function maina(x){
     let y = document.getElementById(x); 
-    console.log(y.getAttribute("style"));
+    //console.log(y.getAttribute("style"));
     if(y.getAttribute("style")==="width:0%"){
         y.setAttribute("style","width:100%");
     }
@@ -90,36 +92,58 @@ function maina(x){
     
 }
 function skaita(x){
+    console.log(pnp);
     pnp++;
+    console.log(pnp);
     //ja pirmo reizi spiez
     if(pnp===1){
         //ievieto bildes indeksu temp
-        tmp1=bildes[x];
-        tmp2=x;
-        maina(x);
+        //iznemums kad uzspiez jau atvertu
+        if(bildes[x]===-1||tmp2===-1){
+            maina(x);
+            pnp=0;
+        }
+        else{
+            tmp1=bildes[x];
+            tmp2=x;
+            maina(x);
+        }
     }
     //ja otro reizi spiez
     else{
         //salidzina 1. un 2.
         if(tmp1===bildes[x]){
-            maina(x);
-            
-            //nakotne vajag lietu kas skaita pari
-        }
-        else{
-            //iznemums ja uzpiez vienu divreiz
             if(tmp2===x){
-                maina(x);
-                tmp=0;
+               // maina(x);
+               pnp=1;
+               
             }
             else{
+            maina(x);
+            document.getElementById(tmp2+"p").setAttribute("onclick","");
+            document.getElementById(x+"p").setAttribute("onclick","");
+            //iznemums kad uzspiez jau atvertu
+            bildes[x]=(-1);
+            pnp=0;
+            //nakotne vajag lietu kas skaita pari
+            uzvara++;
+            if(uzvara===ps){
+                alert("UZVARA");
+            }
+        }
+        }
+        else{
+            
+            
+       //     else{
                 maina(x);
                 maina(tmp2);
                 maina(x);
-        }
+                pnp=0;
+      //  }
         }
         //pnp atkal 0
-        pnp=0;
+        
     }
 }
 function y(z){
